@@ -133,7 +133,7 @@ namespace :install do
     end
   end
 
-  desk 'Install clang/gcc'
+  desc 'Install clang/gcc'
   task :gcc do
     step 'GCC'
     brew_install 'gcc'
