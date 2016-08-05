@@ -124,11 +124,9 @@ namespace :install do
   desc 'Update or Install Brew'
   task :brew do
     step 'Homebrew'
+    puts "RUNNING LINUX"
     if OS.linux?
-      system('ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"')
-      system('export PATH="$HOME/.linuxbrew/bin:$PATH"')
-      system('export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"')
-      system('export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"')
+      system('ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)" && export PATH="$HOME/.linuxbrew/bin:$PATH" && export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH" && export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"')
     else
       unless system('which brew > /dev/null || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
         raise "Homebrew must be installed before continuing."
