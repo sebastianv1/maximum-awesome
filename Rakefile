@@ -246,7 +246,7 @@ task :install do
   unless OS.linux?
     Rake::Task['install:brew_cask'].invoke
   end
-  Rake::Task['install:gcc'].invoke
+  #Rake::Task['install:gcc'].invoke
   Rake::Task['install:the_silver_searcher'].invoke
   unless OS.linux?
     Rake::Task['install:iterm'].invoke

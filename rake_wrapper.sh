@@ -19,3 +19,4 @@ fi
 sudo gem install rake
 sudo gem install os
 
+rake

@@ -5,8 +5,6 @@ MAKE=make
 # Or
 # MAKE='make -j 4' # to compile using four cores
 
-brew-path() { brew info $1 | head -n3 | tail -n1 | cut -d' ' -f1; }
-
 # Prerequisites
 
 brew install gmp
