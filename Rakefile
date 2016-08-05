@@ -136,7 +136,7 @@ namespace :install do
   desc 'Install clang/gcc'
   task :gcc do
     step 'GCC'
-    brew_install 'gcc'
+    system('./install_gcc.sh')
   end
 
   desc 'Install Homebrew Cask'
