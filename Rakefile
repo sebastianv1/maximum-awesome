@@ -124,7 +124,6 @@ namespace :install do
   desc 'Update or Install Brew'
   task :brew do
     step 'Homebrew'
-    puts "RUNNING LINUX"
     if OS.linux?
       system('ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)" && export PATH="$HOME/.linuxbrew/bin:$PATH" && export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH" && export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"')
     else
@@ -132,6 +131,12 @@ namespace :install do
         raise "Homebrew must be installed before continuing."
       end
     end
+  end
+
+  desk 'Install clang/gcc'
+  task :gcc do
+    step 'GCC'
+    brew_install 'gcc'
   end
 
   desc 'Install Homebrew Cask'
@@ -241,6 +246,7 @@ task :install do
   unless OS.linux?
     Rake::Task['install:brew_cask'].invoke
   end
+  Rake::Task['install:gcc'].invoke
   Rake::Task['install:the_silver_searcher'].invoke
   unless OS.linux?
     Rake::Task['install:iterm'].invoke
