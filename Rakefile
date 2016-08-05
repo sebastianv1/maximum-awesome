@@ -126,6 +126,9 @@ namespace :install do
     step 'Homebrew'
     if OS.linux?
       system('ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"')
+      system('export PATH="$HOME/.linuxbrew/bin:$PATH"')
+      system('export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"')
+      system('export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"')
     else
       unless system('which brew > /dev/null || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
         raise "Homebrew must be installed before continuing."
